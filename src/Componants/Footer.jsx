@@ -4,7 +4,7 @@ import { AtSign } from "lucide-react";
 
 function Footer() {
   return (
-    <footer className="bg-[#EFEEEB] w-full h-[144px] flex flex-col mt-10 md:flex-row md:justify-between md:items-center">
+    <footer className="bg-[#EFEEEB] w-full h-[144px] flex flex-col mt-10 md:flex-row md:items-center md:justify-between ">
       <div className="flex items-center justify-center mt-8 md:mt-0 md:ml-28">
         <div className="mr-3 text-lg">Get in touch</div>
         <div className="flex">
@@ -20,11 +20,9 @@ function Footer() {
         </div>
       </div>
 
-      <div className="flex items-center justify-center mb-8 mt-4 md:mt-0 md:mr-28">
-        <a href="#" className="underline text-lg">
-          Home page
-        </a>
-      </div>
+      <a href="#" className="underline text-lg flex justify-center md:mr-28">
+        Home page
+      </a>
     </footer>
   );
 }
