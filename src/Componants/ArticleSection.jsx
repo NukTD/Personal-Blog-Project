@@ -3,6 +3,7 @@ import BlogCard from "./BlogCard";
 import { blogPosts } from "@/data/blogPosts";
 
 function ArticleSection() {
+  const categories = ["Highlight", "Cat", "Inspiration", "General"];
   return (
     <>
       <p className="text-3xl text-[#26231E] font-bold mx-6 md:ml-28">
@@ -10,31 +11,20 @@ function ArticleSection() {
       </p>
       <div className="bg-[#EFEEEB] py-4 mt-5 md:mx-28 md:flex md:items-center md:rounded-xl md:justify-between">
         <div className="md:ml-10 hidden md:block">
-          {/* Button */}
-          <button
-            className="md:text-[#75716B] md:hover:bg-[#DAD6D1] transition duration-300 p-4 rounded-xl
+          {/* a List with Array Map */}
+          <ul>
+            {categories.map((item, index) => {
+              return (
+                <button
+                  className="md:text-[#75716B] md:hover:bg-[#DAD6D1] transition duration-300 p-4 rounded-xl
           md:hover:text-[#43403B] md:mr-6"
-          >
-            Highlight
-          </button>
-          <button
-            className="md:text-[#75716B] md:hover:bg-[#DAD6D1] transition duration-300 p-4 rounded-xl
-          md:hover:text-[#43403B] md:mr-6"
-          >
-            Cat
-          </button>
-          <button
-            className="md:text-[#75716B] md:hover:bg-[#DAD6D1] transition duration-300 p-4 rounded-xl
-          md:hover:text-[#43403B] md:mr-6"
-          >
-            Inspiration
-          </button>
-          <button
-            className="md:text-[#75716B] md:hover:bg-[#DAD6D1] transition duration-300 p-4 rounded-xl
-          md:hover:text-[#43403B] md:mr-6"
-          >
-            General
-          </button>
+                  key={index}
+                >
+                  {item}
+                </button>
+              );
+            })}
+          </ul>
         </div>
 
         <div className="mx-6 w-20 md:w-auto relative ">
@@ -54,18 +44,13 @@ function ArticleSection() {
             name="select"
             className="text-lg  w-80 h-12 rounded-md border border-[#DAD6D1] pl-4"
           >
-            <option value="Highlight" className="text-[#75716B]">
-              Highlight
-            </option>
-            <option value="Cat" className="text-[#75716B]">
-              Cat
-            </option>
-            <option value="Inspiration" className="text-[#75716B]">
-              Inspiration
-            </option>
-            <option value="General" className="text-[#75716B]">
-              General
-            </option>
+            {categories.map((item, index) => {
+              return (
+                <option value={item} className="text-[#75716B]" key={index}>
+                  {item}
+                </option>
+              );
+            })}
           </select>
         </div>
       </div>
