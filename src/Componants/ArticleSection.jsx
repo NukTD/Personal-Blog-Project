@@ -1,4 +1,6 @@
 import { Search } from "lucide-react";
+import BlogCard from "./BlogCard";
+import { blogPosts } from "@/data/blogPosts";
 
 function ArticleSection() {
   return (
@@ -6,7 +8,7 @@ function ArticleSection() {
       <p className="text-3xl text-[#26231E] font-bold mx-6 md:ml-28">
         Latest articles
       </p>
-      <div className=" bg-[#EFEEEB] py-4 mt-5 md:mx-28 md:flex md:items-center md:rounded-xl md:justify-between">
+      <div className="bg-[#EFEEEB] py-4 mt-5 md:mx-28 md:flex md:items-center md:rounded-xl md:justify-between">
         <div className="md:ml-10 hidden md:block">
           {/* Button */}
           <button
@@ -65,6 +67,21 @@ function ArticleSection() {
               General
             </option>
           </select>
+        </div>
+      </div>
+      <div>
+        <div className="blog-list flex flex-col  md:grid md:grid-cols-2 mx-6 md:mx-28 md:gap-6">
+          {blogPosts.map((post) => (
+            <BlogCard
+              key={post.id}
+              image={post.image}
+              category={post.category}
+              title={post.title}
+              description={post.description}
+              author={post.author}
+              date={post.date}
+            />
+          ))}
         </div>
       </div>
     </>
