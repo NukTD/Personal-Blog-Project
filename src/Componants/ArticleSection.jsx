@@ -1,9 +1,15 @@
 import { Search } from "lucide-react";
 import BlogCard from "./BlogCard";
 import { blogPosts } from "@/data/blogPosts";
+import { useState } from "react";
 
 function ArticleSection() {
   const categories = ["Highlight", "Cat", "Inspiration", "General"];
+  const [activeButton, setActiveButton] = useState(null);
+
+  const handleClick = (index) => {
+    setActiveButton(index);
+  };
   return (
     <>
       <p className="text-3xl text-[#26231E] font-bold mx-6 md:ml-28">
@@ -16,9 +22,15 @@ function ArticleSection() {
             {categories.map((item, index) => {
               return (
                 <button
-                  className="md:text-[#75716B] md:hover:bg-[#DAD6D1] transition duration-300 p-4 rounded-xl
-          md:hover:text-[#43403B] md:mr-6"
                   key={index}
+                  onClick={() => handleClick(index)}
+                  className={`md:text-[#75716B] md:hover:bg-[#DAD6D1] transition duration-300 p-4 rounded-xl
+                  md:hover:text-[#43403B] md:mr-6
+                  ${
+                    activeButton === index
+                      ? "bg-[#DAD6D1] text-[#43403B]"
+                      : "hover:bg-[#DAD6D1] hover:text-[#43403B]"
+                  }`}
                 >
                   {item}
                 </button>
@@ -46,7 +58,7 @@ function ArticleSection() {
           >
             {categories.map((item, index) => {
               return (
-                <option value={item} className="text-[#75716B]" key={index}>
+                <option value={item} key={index} className="text-[#75716B]">
                   {item}
                 </option>
               );
